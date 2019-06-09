@@ -1,35 +1,40 @@
-import React from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
 import LinesEllipsis from "react-lines-ellipsis";
 import "./Movie.css";
 
-function Movie({ title, poster, genres, synopsis }) {
-  return (
-    <div className="Movie">
-      <div className="Movie__Column">
-        <MoviePoster poster={poster} alt={title} />
-      </div>
-      <div className="Movie__Column">
-        <h1>{title}</h1>
-        <div className="Movie__Genres">
-          {genres.map((genre, index) => (
-            <MovieGenre genre={genre} key={index} />
-          ))}
+class Movie extends Component {
+  render() {
+    const { title, poster, genres, synopsis } = this.props
+    console.log(title);
+    return (
+      <div className="Movie">
+        <div className="Movie__Column">
+          <MoviePoster poster={poster} alt={title} />
         </div>
-        <div className="Movie__Synopsis">
-          <LinesEllipsis
-            text={synopsis}
-            maxLine="3"
-            ellipsis="..."
-            trimRight
-            basedOn="letters"
-          />
+        <div className="Movie__Column">
+          <h1>{title}</h1>
+          <div className="Movie__Genres">
+            {genres.map((genre, index) => (
+              <MovieGenre genre={genre} key={index} />
+            ))}
+          </div>
+          <div className="Movie__Synopsis">
+            <LinesEllipsis
+              text={synopsis}
+              maxLine="3"
+              ellipsis="..."
+              trimRight
+              basedOn="letters"
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+  
 
+  }
 function MoviePoster({ poster, alt }) {
   return <img src={poster} alt={alt} className="Movie__Poster" />;
 }
