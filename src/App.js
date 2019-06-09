@@ -42,9 +42,13 @@ class App extends Component {
         page
     )
       .then(response => response.json())
-      .then(json => json.data.movies)
+      .then(json => {
+        console.log(json.data);
+        return json.data.movies;
+      })
       .catch(err => console.log(err));
   };
+
   _renderMovies = () => {
     const movies = this.state.movies.map((movie, index) => {
       return (
@@ -55,6 +59,7 @@ class App extends Component {
           synopsis={movie.synopsis}
           key={movie.id}
           rating={index}
+          url={movie.url}
         />
       );
     });
@@ -63,11 +68,11 @@ class App extends Component {
 
   _addMovies = async () => {
     if (this.state.adding) {
-      return alert('불러오는 중 입니다.');
+      return alert("불러오는 중 입니다.");
     } else {
       this.setState({
         adding: !this.state.adding
-      })
+      });
       const movies = await this._callApi(this.state.page);
       this.setState({
         movies: [...this.state.movies, ...movies],
@@ -75,7 +80,7 @@ class App extends Component {
       });
       this.setState({
         adding: !this.state.adding
-      })
+      });
     }
   };
 

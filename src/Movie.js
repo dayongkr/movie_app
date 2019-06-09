@@ -4,11 +4,14 @@ import LinesEllipsis from "react-lines-ellipsis";
 import "./Movie.css";
 
 class Movie extends Component {
+  openUrl = (link) => {
+    window.open(link,'_blank');
+  }
   render() {
-    const { title, poster, genres, synopsis, rating } = this.props;
+    const { title, poster, genres, synopsis, rating, url } = this.props;
     const movieRating = rating + 1;
     return (
-      <div className="Movie">
+      <div className="Movie" onClick={() => this.openUrl(url)}>
         <div className="Movie__Rating">{movieRating}</div>
         <div className="Movie__Column">
           <MoviePoster poster={poster} alt={title} />

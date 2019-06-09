@@ -10,6 +10,11 @@
   text-overflow: ellipsis;
   padding:0 20px;
   box-shadow: 0 8px 38px rgba(133, 133, 133, 0.3), 0 5px 12px rgba(133, 133, 133,0.22);
+  cursor: pointer;
+}
+
+.Movie:hover {
+  box-shadow: 0 15px 45px rgba(133, 133, 133, 0.4), 0 8px 20px rgba(133, 133, 133,0.3);
 }
 
 .Movie__Column{
