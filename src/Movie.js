@@ -1,14 +1,15 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LinesEllipsis from "react-lines-ellipsis";
 import "./Movie.css";
 
 class Movie extends Component {
   render() {
-    const { title, poster, genres, synopsis } = this.props
-    console.log(title);
+    const { title, poster, genres, synopsis, rating } = this.props;
+    const movieRating = rating + 1;
     return (
       <div className="Movie">
+        <div className="Movie__Rating">{movieRating}</div>
         <div className="Movie__Column">
           <MoviePoster poster={poster} alt={title} />
         </div>
@@ -32,9 +33,7 @@ class Movie extends Component {
       </div>
     );
   }
-  
-
-  }
+}
 function MoviePoster({ poster, alt }) {
   return <img src={poster} alt={alt} className="Movie__Poster" />;
 }

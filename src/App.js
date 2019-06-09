@@ -54,6 +54,7 @@ class App extends Component {
           genres={movie.genres}
           synopsis={movie.synopsis}
           key={movie.id}
+          rating={index}
         />
       );
     });
